@@ -1,5 +1,8 @@
 from django.shortcuts import render
-def about_us(request):
-    return render(request,'about_us.html')
+from .models import Restaurant
+
+def home(request):
+    restaurant =Restaurant.objects.first()
+    return render(request,'home.html',{'restaurant_name':restaurant.name if restaurant else 'Restaurant'})
 
 # Create your views here.
